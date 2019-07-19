@@ -9,26 +9,31 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <style>
-    .carousel{
+    .carousel {
         background: #040608;
         margin-top: 20px;
     }
-    .carousel-item{
+
+    .carousel-item {
         text-align: center;
         min-height: 280px; /* Prevent carousel from being distorted if for some reason image doesn't load */
     }
-    .bs-example{
+
+    .bs-example {
         margin: 20px;
         text-align: center;
     }
-    .nav1{
-        background-image: url("https://i.ibb.co/LnMLjyR/banner2.png");
+
+    .nav1 {
+        background-image: url("https://i.ibb.co/tY7B5gR/banner2.png");
         background-repeat: revert;
     }
-    .subs{
+
+    .subs {
         color: #040608;
     }
-    body{
+
+    body {
         background-image: url("https://wallup.net/wp-content/uploads/2018/09/27/12847-abstract-placebo-blurred.jpg");
     }
 
@@ -55,11 +60,11 @@
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button"
                         id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Hola !, Bienvenid@ <b><%=nombre%></b>
+                    Hola !, Bienvenid@ <b><%= nombre %></b>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="/home/perfil">Editar mis datos</a>
-                    <a class="dropdown-item" href="/home/logout">Cerrar sesión</a>
+                    <a class="dropdown-item" href="/usuario/perfil">Editar mis datos</a>
+                    <a class="dropdown-item" href="/usuario/logout">Cerrar sesión</a>
                 </div>
             </div>
         </div>
