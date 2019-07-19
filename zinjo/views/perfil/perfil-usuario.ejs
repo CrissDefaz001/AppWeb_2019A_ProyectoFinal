@@ -10,52 +10,54 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <style>
-    .centrar{
+    .centrar {
         text-align: center;
     }
-    .rellenar{
+
+    .rellenar {
         background-color: rgba(11, 0, 28, 0.32);
     }
-    nav{
-        background-image: url("https://i.ibb.co/LnMLjyR/banner2.png");
+
+    nav {
+        background-image: url("https://i.ibb.co/tY7B5gR/banner2.png");
         background-repeat: revert;
     }
 
 </style>
 <body>
 <!-- Barra de navegacion -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="#">
-                <img src="https://image.flaticon.com/icons/png/128/403/403218.png"
-                     width="90" height="90" alt="ropa">
-            </a>
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 justify-content-center">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#"><b>ZINJO: </b>PERFIL DE USUARIO<span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-            <div class="my-2 my-lg-0">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button"
-                            id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Editando perfil de <b><%=nombre%></b>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <a class="dropdown-item" href="/home/principal">Volver al inicio</a>
-                        <a class="dropdown-item" href="/home/logout">Cerrar sesión</a>
-                    </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="#">
+            <img src="https://image.flaticon.com/icons/png/128/403/403218.png"
+                 width="90" height="90" alt="ropa">
+        </a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 justify-content-center">
+            <li class="nav-item active">
+                <a class="nav-link" href="#"><b>ZINJO: </b>PERFIL DE USUARIO<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <div class="my-2 my-lg-0">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button"
+                        id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Editando perfil de <b><%= nombre %></b>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <a class="dropdown-item" href="/home/principal">Volver al inicio</a>
+                    <a class="dropdown-item" href="/usuario/logout">Cerrar sesión</a>
                 </div>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
 <div class="container">
-    <form action="crearCont" method="post" class="form-group">
+    <form action="editarUsuario" method="post" class="form-group">
         <div class="row">
             <div class="col-lg-7">
                 <br/><h5 class="centrar">Datos personales</h5><br/>

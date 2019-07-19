@@ -9,39 +9,48 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <style>
-    .carousel{
+    .carousel {
         background: #040608;
         margin-top: 20px;
     }
-    .carousel-item{
+
+    .carousel-item {
         text-align: center;
         min-height: 280px; /* Prevent carousel from being distorted if for some reason image doesn't load */
     }
-    .bs-example{
+
+    .bs-example {
         margin: 20px;
         text-align: center;
     }
-    nav{
-        background-image: url("https://i.ibb.co/LnMLjyR/banner2.png");
+
+    nav {
+        background-image: url("https://i.ibb.co/tY7B5gR/banner2.png");
         background-repeat: revert;
         /*font-size: x-large;*/
     }
-    .titulo{
+
+    .titulo {
         text-align: center;
         font-size: x-large;
         font-family: "Ink Free", serif;
         color: white;
     }
-    .subs{
+
+    .subs {
         color: #040608;
     }
-    .login{
+
+    .login {
         background-color: #040608;
         color: white;
-    }.log{
+    }
+
+    .log {
         text-align: center;
-         }
-    body{
+    }
+
+    body {
         background-image: url("https://wallup.net/wp-content/uploads/2018/09/27/12847-abstract-placebo-blurred.jpg");
     }
 
@@ -65,14 +74,16 @@
             </li>
         </ul>
         <div class="my-2 my-lg-0">
-            <a href="/home/registro"> <button class="btn btn-outline-info">Registrarme</button></a>
+            <a href="/usuario/registro">
+                <button class="btn btn-outline-info">Registrarme</button>
+            </a>
             <a class="btn btn-outline-light" data-toggle="collapse" href="#multiCollapseExample1"
                role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Ingresar</a>
             <div class="row">
                 <div class="col">
                     <div class="collapse multi-collapse" id="multiCollapseExample1">
-                            <div class="card card-body login">
-                                <form action="login" method="post">
+                        <div class="card card-body login">
+                            <form action="/usuario/login" method="post">
                                 <label for="username">Usuario:</label>
                                 <input class="form-control" id="username" type="text" name="username"
                                        placeholder="Nombre de usuario" required>
@@ -83,8 +94,8 @@
                                     <br/>
                                     <button class="btn btn-outline-info" type="submit">Iniciar Sesión</button>
                                 </div>
-                                </form>
-                            </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
