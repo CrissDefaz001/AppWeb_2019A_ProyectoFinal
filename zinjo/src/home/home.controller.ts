@@ -10,9 +10,10 @@ export class HomeController {
 
   @Get('principal')
   mostrarInicio(@Session() session, @Res() res) {
+
     if (session.username) {
       res.render('home/principal', {
-        nombre: session.username.toUpperCase(),
+        username: session.username.toUpperCase(),
       });
     } else {
       res.redirect('/home/index');

@@ -22,7 +22,6 @@
         background-image: url("https://i.ibb.co/tY7B5gR/banner2.png");
         background-repeat: revert;
     }
-
 </style>
 <body>
 <!-- Barra de navegacion -->
@@ -34,7 +33,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <a class="navbar-brand" href="#">
-            <img src="https://image.flaticon.com/icons/png/128/403/403218.png"
+            <img src="https://media.fontis.com.au/media/cms/page/akeneo.png"
                  width="90" height="90" alt="ropa">
         </a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 justify-content-center">
@@ -46,10 +45,10 @@
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button"
                         id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Editando perfil de <b><%= nombre %></b>
+                    Editando perfil de <b><%= username %></b>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <a class="dropdown-item" href="/home/principal">Volver al inicio</a>
+                    <a class="dropdown-item" href="/home/principal">Volver a la Tienda</a>
                     <a class="dropdown-item" href="/usuario/logout">Cerrar sesión</a>
                 </div>
             </div>
@@ -57,58 +56,46 @@
     </div>
 </nav>
 <div class="container">
-    <form action="editarUsuario" method="post" class="form-group">
+    <form action="/usuario/actualizarDatosUsuario/<%=valor.idUsuario%>" method="post" class="form-group">
         <div class="row">
             <div class="col-lg-7">
                 <br/><h5 class="centrar">Datos personales</h5><br/>
+
                 <label for="nombre">Nombre Completo:</label>
-                <input id="nombre" name="nombre" type="text" class="form-control" required>
+                <input id="nombre" name="nombreCompleto" type="text" class="form-control" maxlength="50" required
+                     value="<%=valor.nombreCompleto%>">
 
                 <label for="telf">Nombre de Usuario:</label>
-                <input id="telf" name="usuario" type="email" class="form-control"
-                       placeholder="Escribe un nickname" required>
+                <input id="telf" name="usuario" type="text" class="form-control"
+                       placeholder="Escribe un nickname" maxlength="15" required
+                      value="<%=valor.usuario%>">
 
                 <label for="direccion">Direccion:</label>
-                <input id="direccion" name="direccion" type="text" class="form-control" required>
+                <input id="direccion" name="direccion" type="text" class="form-control" maxlength="50" required
+                       value="<%=valor.direccion%>">
 
                 <label for="telf">Teléfono:</label>
-                <input id="telf" name="telefono" type="text" class="form-control" required>
+                <input id="telf" name="telefono" type="text" class="form-control" maxlength="15" required
+                       value="<%=valor.telefono%>">
 
                 <label for="telf">Fecha Nacimiento:</label>
-                <input id="telf" name="fecha" type="date" class="form-control" required>
-
-            </div>
-            <div class="col-lg-5">
-                <br/><h5 class="centrar">Cambiar Contraseña</h5><br/>
-
-                <label for="password">Contraseña actual:</label>
-                <input class="form-control" id="password" type="password" name="password0"
-                       placeholder="Ingresa tu contraseña actual" required>
-
-                <label for="password">Nueva Contraseña:</label>
-                <input class="form-control" id="password" type="password" name="password1"
-                       placeholder="Escribe tu nueva Contraseña" required>
-
-                <label for="password">Confirmar contraseña:</label>
-                <input class="form-control" id="password" type="password" name="password2"
-                       placeholder="Confirma tu contraseña" required>
+                <input id="telf" name="fechaNac" type="date" class="form-control" required
+                       value="<%=valor.fechaNac%>">
                 <br/>
                 <div class="row">
                     <div class="col-lg-12 centrar">
-                        <button type="reset" class="btn btn-outline-danger">Limpiar</button>
-                        <button class="btn btn-outline-primary">Cambiar contraseña</button>
+                        <button class="btn btn-primary">Guardar cambios</button>
+                        <a href="/home/principal">
+                            <button type="button" class="btn btn-outline-dark">Volver a la Tienda</button>
+                        </a>
                     </div>
                 </div>
-                <br/>
             </div>
-        </div>
-        <br/>
-        <div class="row">
-            <div class="col-lg-12 centrar">
-                <a href="/home/principal">
-                    <button type="button" class="btn btn-outline-dark">Cancelar</button>
+            <div class="col-lg-5" centrar>
+                <br/><br/>
+                <a href="/usuario/editarPass/<%=valor.idUsuario%>">
+                    <button type="button" class="btn btn-outline-danger">Cambiar contraseña</button>
                 </a>
-                <button class="btn btn-outline-primary">Guardar cambios</button>
             </div>
         </div>
     </form>

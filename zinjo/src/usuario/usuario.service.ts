@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UsuarioEntity } from './usuario.entity';
-import { Repository } from 'typeorm';
 import { Usuario } from '../../interfaces/usuario';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class UsuarioService {
@@ -17,10 +17,25 @@ export class UsuarioService {
       .create(nuevoUsuario);
     return this._UsuarioRepository
       .save(objetoEntidad);
+
   }
 
   async buscar(parametrosBusqueda?):Promise<Usuario[]>{
     return await this._UsuarioRepository.find(parametrosBusqueda)
   }
 
+  async actualizarUsuario(id:number, usuario:Usuario){
+    return await this._UsuarioRepository
+      .update(id,{
+        nombreCompleto: usuario.nombreCompleto,
+        usuario: usuario.usuario,
+        direccion: usuario.direccion,
+        telefono:usuario.telefono,
+      fechaNac: usuario.fechaNac});
+  }
+
+  async actualizarContrasenia(id:number, usuario:Usuario){
+    return await this._UsuarioRepository
+      .update(id,{ passwordUno: usuario.passwordUno, passwordDos: usuario.passwordDos });
+  }
 }
