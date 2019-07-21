@@ -48,7 +48,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <a class="navbar-brand" href="#">
-            <img src="https://image.flaticon.com/icons/png/128/403/403218.png"
+            <img src="https://media.fontis.com.au/media/cms/page/akeneo.png"
                  width="90" height="90" alt="ropa">
         </a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 justify-content-center">
@@ -60,10 +60,10 @@
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button"
                         id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Hola !, Bienvenid@ <b><%= nombre %></b>
+                    !Hola! Bienvenida de nuevo <b><%= username %></b>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="/usuario/perfil">Editar mis datos</a>
+                    <a class="dropdown-item" href="/usuario/editarUsuario/<%=username.toLowerCase()%>">Editar mi perfil</a>
                     <a class="dropdown-item" href="/usuario/logout">Cerrar sesión</a>
                 </div>
             </div>

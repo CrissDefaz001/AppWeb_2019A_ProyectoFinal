@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+    .centrar {
+        text-align: center;
+    }
+
+    .rellenar {
+        background-color: rgba(11, 0, 28, 0.32);
+    }
+
+    nav {
+        background-image: url("https://i.ibb.co/tY7B5gR/banner2.png");
+        background-repeat: revert;
+    }
+    input[type=checkbox] {
+        text-align: left;
+    }
+
+</style>
+<body>
+<!-- Barra de navegacion -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="#">
+            <img src="https://media.fontis.com.au/media/cms/page/akeneo.png"
+                 width="90" height="90" alt="ropa">
+        </a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 justify-content-center">
+            <li class="nav-item active">
+                <a class="nav-link" href="#"><b>ZINJO: </b>PERFIL DE USUARIO<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <div class="my-2 my-lg-0">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button"
+                        id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Editando contraseña de <b><%= username2.toUpperCase() %></b>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <a class="dropdown-item" href="/home/principal">Volver a la tienda</a>
+                    <a class="dropdown-item" href="/usuario/logout">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <form action="/usuario/actualizarContrasenia/<%=valor2.idUsuario%>" method="post" class="form-group">
+        <div class="row">
+            <div class="col-lg-5">
+                <br/><h5 class="centrar">Cambiar Contraseña</h5><br/>
+
+                <label for="password0">Contraseña actual:</label>
+                <input class="form-control" id="password0" type="password" name="password0"
+                       placeholder="Ingresa tu contraseña actual" value="<%=valor2.passwordUno%>" required>
+                <br/>
+                <label for="password1">Nueva Contraseña:</label>
+                <input class="form-control" id="password1" type="password" name="passwordUno"
+                       minlength="5" maxlength="10" placeholder="Crea una contraseña entre 6 y 10 caracteres" required>
+                <br/>
+                <label for="password2">Confirmar contraseña:</label>
+                <input class="form-control" id="password2" type="password" name="passwordDos"
+                       minlength="5" maxlength="10" placeholder="Vuelve a digitar tu contraseña" required>
+                <br/>
+                <label for="showpass">Mostrar contraseñas</label>
+                <input id="showpass" type="checkbox" onclick="myFunction()" align="left">
+                <script>
+                  function myFunction() {
+                    var x = document.getElementById("password0");
+                    if (x.type === "password") {
+                      x.type = "text";
+                    } else {
+                      x.type = "password";
+                    }
+                    var y = document.getElementById("password1");
+                    if (y.type === "password") {
+                      y.type = "text";
+                    } else {
+                      y.type = "password";
+                    }
+                    var z = document.getElementById("password2");
+                    if (z.type === "password") {
+                      z.type = "text";
+                    } else {
+                      z.type = "password";
+                    }
+                  }
+                </script>
+                <div class="row">
+                    <div class="col-lg-12 centrar">
+                        <button class="btn btn-primary">Cambiar contraseña</button>
+                        <a href="/usuario/editarUsuario/<%=username2%>">
+                            <button type="button" class="btn btn-outline-dark">Volver a perfil</button>
+                        </a>
+                        <a href="/home/principal">
+                            <button type="button" class="btn btn-outline-dark">Ir a la tienda</button>
+                        </a>
+                    </div>
+                </div>
+                <br/>
+            </div>
+        </div>
+        <br/>
+    </form>
+</div>
+</body>
+</html>
