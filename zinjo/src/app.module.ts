@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsuarioEntity } from './usuario/usuario.entity';
 import {VestidoEntity} from "./vestido/vestido.entity";
 import {VestidoModule} from "./vestido/vestido.module";
+import {VentasModule} from "./ventas/ventas.module";
 
 @Module({
   imports: [
@@ -23,7 +24,7 @@ import {VestidoModule} from "./vestido/vestido.module";
       synchronize: true,
       dropSchema: false,
     }),
-    HomeModule, UsuarioModule, VestidoModule],
+    HomeModule, UsuarioModule, VestidoModule,VentasModule],
   controllers: [AppController],
   providers: [AppService],
 })
