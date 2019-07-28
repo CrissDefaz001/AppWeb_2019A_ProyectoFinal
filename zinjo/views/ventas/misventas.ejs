@@ -124,15 +124,15 @@
                     <td>
 
                         <!--<form action="/libros/editar" method="post">-->
-                        <a href="/pokemon/editar/<%= vestido.id %>">
-                            <input id="id" name="id" type="number" value="<%= vestido.id %>" hidden>
+                        <a href="/ventas/editar/<%= vestido.id %>">
+                            <input id="idedit" name="idedit" type="number" value="<%= vestido.id %>" hidden>
                             <button class="btn-light">Editar</button>
                         </a>
                         <!--</form>-->
                         <br>
                         <br>
                         <form action="/ventas/eliminarpub" method="post">
-                            <input id="idelim" name="idelim" type="number" value="<%= vestido.id %>" >
+                            <input id="idelim" name="idelim" type="number" value="<%= vestido.id %>" hidden>
                             <button class="btn-light">Borrar</button>
                         </form>
                     </td>
