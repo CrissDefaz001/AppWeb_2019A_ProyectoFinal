@@ -2,33 +2,49 @@ import {Body, Controller, UseInterceptors, UploadedFile, Get, Post, Res, Session
 import { FileInterceptor } from  '@nestjs/platform-express';
 import {Vestido, VestidoService} from "./vestido.service";
 import {storage} from '../uploader/uploader';
-
+import { UsuarioService } from '../usuario/usuario.service';
 @Controller('/vestido')
 export class VestidoController {
     constructor(
         private readonly _vestidoService:VestidoService,
+        private readonly _usuarioService: UsuarioService
     )
     {}
 
-    @Get('registrar')
-    registrarVestido(
+    @Get('registrar/:username')
+    async registrarVestido(
         @Res() response,
         @Session() session,
-        @Param('idUsuario') idUsuario: number
+        @Param('username') username: string
     )
     {
-        response.render(
-            'vestido/vestido_registro',
+        this._usuarioService.buscar(
             {
-
-                username: session.username.toUpperCase()
-
-            }
-        )
+                select: ['idUsuario', 'nombreCompleto', 'nombreCompleto', 'direccion',
+                    'fechaNac', 'usuario', 'telefono'],
+                where: [{ 'usuario': username }],
+            },
+        ).then(
+            value => {
+                value.forEach(
+                    i => {
+                        // console.log(i.idUsuario);
+                        response.render('vestido/vestido_registro',
+                            { valor: i, username: session.username.toUpperCase() });
+                    },
+                );
+            },
+        ).catch(
+            reason => {
+                console.log(reason);
+                response.status(400);
+                response.send({ mensaje: 'Error de consulta', error: 400 });
+            },
+        );
     }
 
 
-    @Post('crear')@UseInterceptors(
+    @Post('crear/:idUsuario')@UseInterceptors(
         FileInterceptor(
             'pic',
             {
@@ -39,18 +55,17 @@ export class VestidoController {
     async registrarVestidoPost(
         @Res() response,
         @Session() session,
+        @Param('idUsuario') idUsuario,
         @Body() vestido: Vestido,
     ){
-
+        vestido.usuario = idUsuario
         const vestido_nuevo = await this._vestidoService.crear(vestido);
         console.log(vestido_nuevo);
     }
 
     @Get('listar')
-    async getRoles(
+    async getVestidos(
     ) {
         return await this._vestidoService.buscar();
     }
-
-
 }

@@ -100,14 +100,16 @@
         <p></p>
     </span>
 </div>
+
 <div class="container">
-    <div class="row">
-        <div class="col-lg-7">
+    <form action="/vestido/crear/<%=valor.idUsuario%>" enctype="multipart/form-data" method="post">
+    <div class="form-row">
+        <div class="form-group col-md-6">
             <div class="form-group row">
-                <label for="id" class="form-control-label col-sm-10 boton boton-sin-seleccion text-box" id="lb-imagen"><img src="https://images.vexels.com/media/users/3/142827/isolated/lists/98e256ca2935093c9082795b3659e3f7-stroke-dress.png"/></label>
+                <label for="pic" class="form-control-label col-sm-10 boton boton-sin-seleccion text-box" id="lb-imagen"><img src="https://images.vexels.com/media/users/3/142827/isolated/lists/98e256ca2935093c9082795b3659e3f7-stroke-dress.png"/></label>
                 <div class="col-sm-9" style="margin-left: 10px">
-                    <input id="id"
-                           name="id"
+                    <input id="pic"
+                           name="pic"
                            type="file"
                            accept="image/*"
                            hidden
@@ -118,7 +120,8 @@
                 <img id="imgMuestra" src=""  class="maxW">
             </div>
         </div>
-        <form action="/vestido/crear" method="post">
+
+        <div class="form-group col-md-6">
             <div class="form-group row">
                 <label for="talla" class="col-sm-2 col-form-label">Talla</label>
                 <div class="col-sm-4">
@@ -152,16 +155,16 @@
             <div class="form-group row">
                 <div class="col-sm-10">
                     <button type="button" class="btn btn-danger">Cancelar</button>
-                    <button type="button" class="btn btn-success">Vender Vestido</button>
-                    <input type="submit" value="Submit">
+                    <button type="submit" value="Submit" class="btn btn-success">Vender Vestido</button>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
+    </form>
 </div>
 <script>
     function validarArchivos(){
-        const archivo = document.getElementById('imagenComic');
+        const archivo = document.getElementById('pic');
         console.log(archivo.files);
         const boton = document.getElementById("lb-imagen");
         if(archivo.files.length>0){
