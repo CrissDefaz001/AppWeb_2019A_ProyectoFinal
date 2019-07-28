@@ -5,6 +5,8 @@ import { HomeModule } from './home/home.module';
 import { UsuarioModule } from './usuario/usuario.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsuarioEntity } from './usuario/usuario.entity';
+import {VestidoEntity} from "./vestido/vestido.entity";
+import {VestidoModule} from "./vestido/vestido.module";
 
 @Module({
   imports: [
@@ -16,11 +18,12 @@ import { UsuarioEntity } from './usuario/usuario.entity';
       username: 'admin',
       password: 'admin',
       database: 'zinjo',
-      entities: [UsuarioEntity],
+      entities: [UsuarioEntity,
+      VestidoEntity],
       synchronize: true,
       dropSchema: false,
     }),
-    HomeModule, UsuarioModule],
+    HomeModule, UsuarioModule, VestidoModule],
   controllers: [AppController],
   providers: [AppService],
 })
