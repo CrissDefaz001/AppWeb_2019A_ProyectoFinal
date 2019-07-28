@@ -87,10 +87,10 @@
                     <a class="nav-link" href="#">Tienda</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/vestido/registrar">Vender</a>
+                    <a class="nav-link" href="/vestido/registrar/<%=username.toLowerCase()%>">Vender</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="ventas/misventas">Mis ventas</a>
+                    <a class="nav-link" href="/ventas/misventas">Mis ventas</a>
                 </li>
             </ul>
         </div>
@@ -163,7 +163,9 @@
 
             <div class="form-group row">
                 <div class="col-sm-10">
-                    <button type="button" class="btn btn-danger" href="/home/principal">Cancelar</button>
+                    <a href="/ventas/misventas">
+                    <button type="button" class="btn btn-danger">Cancelar</button>
+                    </a>
                     <button type="submit" value="Submit" class="btn btn-success">Vender Vestido</button>
                 </div>
             </div>
