@@ -8,6 +8,7 @@ import { UsuarioEntity } from './usuario/usuario.entity';
 import {VestidoEntity} from "./vestido/vestido.entity";
 import {VestidoModule} from "./vestido/vestido.module";
 import {VentasModule} from "./ventas/ventas.module";
+import {UsuarioService} from "./usuario/usuario.service";
 
 @Module({
   imports: [

@@ -38,4 +38,6 @@ export class UsuarioService {
     return await this._UsuarioRepository
       .update(id,{ passwordUno: usuario.passwordUno, passwordDos: usuario.passwordDos });
   }
+
+
 }
