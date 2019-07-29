@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { join } from 'path';
-import { NestExpressApplication } from '@nestjs/platform-express';
+import { NestExpressApplication} from '@nestjs/platform-express';
 import * as session from 'express-session';
 import * as cookieParser from 'cookie-parser';
 
@@ -29,6 +29,7 @@ async function bootstrap() {
   app.setViewEngine('ejs');
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   await app.listen(3000);
+
 }
 
 // noinspection JSIgnoredPromiseFromCall

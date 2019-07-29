@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import {VestidoEntity} from "../vestido/vestido.entity"
+
 
 @Entity('usuario')
 export class UsuarioEntity {
@@ -55,6 +57,11 @@ export class UsuarioEntity {
   })
   passwordDos: string;
 
-  // ManyToOne - OneToMany
+  @OneToMany(
+      type => VestidoEntity,
+      // @ts-ignore
+      vestido => vestido.usuario
+  )
+  vestidos:VestidoEntity[];
 
 }
