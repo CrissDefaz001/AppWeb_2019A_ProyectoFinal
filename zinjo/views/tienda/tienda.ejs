@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+
+    .nav1 {
+        background-image: url("https://i.ibb.co/tY7B5gR/banner2.png");
+        background-repeat: revert;
+    }
+
+    form label {
+        color: white;
+        font-weight:bold;
+        padding: 8px;
+    }
+    body {
+        background-image: url("https://wallup.net/wp-content/uploads/2018/09/27/12847-abstract-placebo-blurred.jpg");
+    }
+
+    .maxW{
+        width: 100%;
+        display: block;
+    }
+    .boton-sin-seleccion{
+        color: white;
+        margin: 0 auto;
+        cursor: pointer;
+        text-align: center
+    }
+
+
+    .container{
+        width: 100% ;
+        margin-top: 10%;
+        font-family: sans-serif;
+        letter-spacing: 1px;
+    }
+
+      .container h2{
+        background: #9b1fcc;
+        color: #fff;
+        width: 100% ;
+        font-size: 24px;
+        padding: 5px;
+        height: 40px;
+    }
+
+     .container h2::after{
+
+        content: '';
+        border-top: 40px  solid #9b1fcc;
+        border-right: 40px  solid transparent;
+        position: relative;
+        left: 48px;
+        top: 34px;
+
+    }
+
+    .row{
+        margin-top: 30px;
+    }
+    img{
+        width: 100%;
+    }
+
+    .product-bottom .fa{
+        color: #28a745;
+        font-size: 10px;
+    }
+
+    .product-bottom h3{
+        
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+.product-bottom h5{
+        
+        font-size: 15px;
+        padding-bottom: 10px;
+    }
+
+.overlay{
+    display: block;
+    opacity: 0;
+    position: absolute;
+    top: 10%;
+    margin-left: 0;
+    width: 70px;
+}
+
+.product-top:hover .overlay{
+    opacity: 1;
+    margin-left: 5%;
+    transition: 0.5s;
+}
+
+
+</style>
+<body>
+<!-- Barra de navegacion-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark nav1">
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="#">
+            <img src="https://media.fontis.com.au/media/cms/page/akeneo.png"
+                 width="90" height="90" alt="ropa">
+        </a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 justify-content-center">
+            <li class="nav-item active">
+                <a class="nav-link" >VENDE TU VESTIDO AQUÍ Y AHORA<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <div class="my-2 my-lg-0">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button"
+                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    !Hola! Bienvenida de nuevo <b><%= username %></b>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="/usuario/editarUsuario/<%=username.toLowerCase()%>">Editar mi perfil</a>
+                    <a class="dropdown-item" href="/usuario/logout">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- Carrusel -->
+<div class="container1">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto nav-tabs">
+                <li class="nav-item active">
+                    <a class="navbar-brand" href="#"><b>ZINJO</b></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home/principal">Inicio<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Tienda</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/vestido/registrar">Vender</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Mis ventas</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div>
+    <span>
+        <p></p>
+        <p></p>
+    </span>
+</div>
+
+<div class="container">
+    <h2>Tienda</h2>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="product-top"> 
+                <img src="vestido1.jpg"  height="300" width="180">
+                    <div class="overlay">
+                        <button type="button" class="btn btn-secondary" title="Compra Rapida"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+            </div>
+           
+
+            <div class="product-bottom text-center"> 
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+
+                    <h3>Black Dress</h3>
+                    <h5>Precio 400</h5>
+
+            </div>
+        </div>  
+
+<div class="col-md-3">
+            <div class="product-top"> 
+                <img src="vestido2.jpg"  height="300" width="180">
+                    <div class="overlay">
+                        <button type="button" class="btn btn-secondary" title="Compra Rapida"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+            </div>
+           
+
+            <div class="product-bottom text-center"> 
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+
+                    <h3>O Dress</h3>
+                    <h5>Precio 500</h5>
+
+            </div>
+        </div> 
+
+  
+
+
+
+        <div class="col-md-3">
+            <div class="product-top"> 
+                <img src="vestido3.jpg"  height="300" width="180">
+                    <div class="overlay">
+                        <button type="button" class="btn btn-secondary" title="Compra Rapida"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+            </div>
+           
+
+            <div class="product-bottom text-center"> 
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+
+                    <h3>C Dress</h3>
+                    <h5>Precio 300</h5>
+
+            </div>
+        </div>  
+
+
+
+        <div class="col-md-3">
+            <div class="product-top"> 
+                <img src="vestido1.jpg"  height="300" width="180">
+                    <div class="overlay">
+                        <button type="button" class="btn btn-secondary" title="Compra Rapida"><i class="fas fa-shopping-cart"></i></button>
+               
+                    </div>
+            </div>
+           
+
+            <div class="product-bottom text-center"> 
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+
+                    <h3>Black Dress</h3>
+                    <h5>Precio 400</h5>
+
+            </div>
+        </div>  
+
+
+
+
+
+        
+    </div>
+    </div>
+
+
+<script>
+    function validarArchivos(){
+        const archivo = document.getElementById('pic');
+        console.log(archivo.files);
+        const boton = document.getElementById("lb-imagen");
+        if(archivo.files.length>0){
+            boton.classList.remove("boton-sin-seleccion");
+            boton.classList.add("boton-seleccionado");
+            boton.innerText="Imagen seleccionada";
+            const file = archivo.files[0];
+            const reader = new FileReader();
+            reader.onload = (eventoLecturaArchivo =>{
+                const url = eventoLecturaArchivo.target.result;
+                console.log(url);
+                const imagenMuestra = document.getElementById('imgMuestra');
+                imagenMuestra.src = url;
+            });
+            reader.readAsDataURL(file);
+        }else{
+            boton.classList.remove("boton-seleccionado");
+            boton.classList.add("boton-sin-seleccion");
+            boton.innerText="Subir imagen";
+        }
+    }
+</script>
+</body>
+</html>

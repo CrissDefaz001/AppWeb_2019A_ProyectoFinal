@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsuarioEntity } from './usuario/usuario.entity';
 import {VestidoEntity} from "./vestido/vestido.entity";
 import {VestidoModule} from "./vestido/vestido.module";
+import { TiendaModule } from './tienda/tienda.module';
 
 @Module({
   imports: [
@@ -15,15 +16,15 @@ import {VestidoModule} from "./vestido/vestido.module";
       type: 'mysql',
       host: 'localhost',
       port: 3306,
-      username: 'admin',
-      password: 'admin',
+      username: 'root',
+      password: '',
       database: 'zinjo',
       entities: [UsuarioEntity,
       VestidoEntity],
       synchronize: true,
       dropSchema: false,
     }),
-    HomeModule, UsuarioModule, VestidoModule],
+    HomeModule, UsuarioModule, VestidoModule, TiendaModule],
   controllers: [AppController],
   providers: [AppService],
 })
