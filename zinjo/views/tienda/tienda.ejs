@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Inicio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="jquery-3.4.1.min.js"></script>
+
 </head>
 <style>
 
@@ -151,7 +154,7 @@
                     <a class="nav-link" href="#">Tienda</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/vestido/registrar">Vender</a>
+                    <a class="nav-link" href="/vestido/registrar/<%=username.toLowerCase()%>">Vender</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Mis ventas</a>
@@ -170,111 +173,80 @@
 <div class="container">
     <h2>Tienda</h2>
     <div class="row">
-        <div class="col-md-3">
-            <div class="product-top"> 
-                <img src="vestido1.jpg"  height="300" width="180">
-                    <div class="overlay">
-                        <button type="button" class="btn btn-secondary" title="Compra Rapida"><i class="fas fa-shopping-cart"></i></button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Confirmación</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="false">&times;</span>
+                        </button>
                     </div>
-            </div>
-           
-
-            <div class="product-bottom text-center"> 
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-
-                    <h3>Black Dress</h3>
-                    <h5>Precio 400</h5>
-
-            </div>
-        </div>  
-
-<div class="col-md-3">
-            <div class="product-top"> 
-                <img src="vestido2.jpg"  height="300" width="180">
-                    <div class="overlay">
-                        <button type="button" class="btn btn-secondary" title="Compra Rapida"><i class="fas fa-shopping-cart"></i></button>
+                    <div class="modal-body">
+                        ¿Desea comprar el vestido? Costo: <span id="costoModal"></span>
                     </div>
+                    <div class="modal-footer">
+                        <input type="text" id="identi" hidden>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <form action="/vestido/confirmar/">
+                            <button type="submit" class="btn btn-primary">Confirmar</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-           
+        </div>
 
-            <div class="product-bottom text-center"> 
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-
-                    <h3>O Dress</h3>
-                    <h5>Precio 500</h5>
-
-            </div>
-        </div> 
-
-  
-
-
+        <%vestidos.forEach(
+                (it)=>{
+        %>
 
         <div class="col-md-3">
             <div class="product-top"> 
-                <img src="vestido3.jpg"  height="300" width="180">
+                <img src="<%=it.imagenVestido%>"  height="300" width="180">
                     <div class="overlay">
-                        <button type="button" class="btn btn-secondary" title="Compra Rapida"><i class="fas fa-shopping-cart"></i></button>
+
+                        <button type="button" class="btn btn-secondary" title="Compra Rapida" data-value="<%=it.id%>" data-costo="<%=it.precio%>"><i id="btnConfirmar" class="fa fa-shopping-cart"></i></button>
+
                     </div>
             </div>
            
 
             <div class="product-bottom text-center"> 
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
 
-                    <h3>C Dress</h3>
-                    <h5>Precio 300</h5>
-
-            </div>
-        </div>  
-
-
-
-        <div class="col-md-3">
-            <div class="product-top"> 
-                <img src="vestido1.jpg"  height="300" width="180">
-                    <div class="overlay">
-                        <button type="button" class="btn btn-secondary" title="Compra Rapida"><i class="fas fa-shopping-cart"></i></button>
-               
-                    </div>
-            </div>
-           
-
-            <div class="product-bottom text-center"> 
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-
-                    <h3>Black Dress</h3>
-                    <h5>Precio 400</h5>
+                    <h3><%=it.color%></h3>
+                    <h3><%=it.estado%></h3>
+                    <h5>Precio $ <%=it.precio%></h5>
 
             </div>
         </div>  
-
-
-
-
-
+<%})%>
         
     </div>
     </div>
 
-
 <script>
+    $(document).ready(function (){
+        debugger
+
+        $('#botonConfirmar').click(function(){
+            const id = $(this).data('value');
+            const precio = $(this).data('costo');
+            document.getElementById('identi').value = id;
+            document.getElementById('costoModal').value = precio;
+            $("#exampleModal").modal('show');
+        });
+    });
+
+</script>
+<script>
+
+
     function validarArchivos(){
         const archivo = document.getElementById('pic');
         console.log(archivo.files);

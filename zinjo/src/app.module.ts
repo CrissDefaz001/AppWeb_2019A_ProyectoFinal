@@ -17,7 +17,7 @@ import { TiendaModule } from './tienda/tienda.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '',
+      password: 'root1234',
       database: 'zinjo',
       entities: [UsuarioEntity,
       VestidoEntity],

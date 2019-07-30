@@ -57,8 +57,11 @@ export class VestidoController {
         @Session() session,
         @Param('idUsuario') idUsuario,
         @Body() vestido: Vestido,
+        @UploadedFile() file
     ){
         vestido.usuario = idUsuario
+        file.path=file.path.replace("publico","");
+        vestido.imagenVestido = file.path.split("\\").join("/");
         const vestido_nuevo = await this._vestidoService.crear(vestido);
         console.log(vestido_nuevo);
     }

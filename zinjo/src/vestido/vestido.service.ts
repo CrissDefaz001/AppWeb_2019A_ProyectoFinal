@@ -42,6 +42,8 @@ export interface Vestido {
     precio:number;
     estado:string;
     descripcion:string;
+    imagenVestido:string;
+    estadoVenta:boolean;
     usuario?:UsuarioEntity,
 
 }

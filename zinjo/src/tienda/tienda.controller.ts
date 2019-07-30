@@ -3,24 +3,38 @@ import { FileInterceptor } from  '@nestjs/platform-express';
 import {Vestido, VestidoService} from "../vestido/vestido.service";
 import {storage} from '../uploader/uploader';
 import { UsuarioService } from '../usuario/usuario.service';
+import {TiendaService} from "./tienda.service";
 
 
 @Controller('/tienda')
 export class TiendaController {
-
-    @Get('tienda')
-    mostrarHome(@Res() res) {
-        res.render('tienda/tienda');
+    constructor(private readonly _tiendaService: TiendaService) {
     }
 
 
-    @Get('principal')
-    mostrarInicio(@Session() session, @Res() res) {
+
+
+    @Get('tienda')
+   async mostrarTienda(@Session() session, @Res() res) {
 
         if (session.username) {
-            res.render('home/principal', {
-                username: session.username.toUpperCase(),
-            });
+            try {
+                const parametro = {
+                    where:[
+                        {estadoVenta:false}
+                    ]
+                };
+                const vestidos=await this._tiendaService.buscar(parametro);
+                res.render('tienda/tienda', {
+                    username: session.username.toUpperCase(),
+
+                    vestidos: vestidos
+
+                });
+            }catch (e) {
+                console.error(e);
+            }
+
         } else {
             res.redirect('/home/index');
         }

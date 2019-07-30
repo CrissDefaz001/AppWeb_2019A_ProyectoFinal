@@ -18,6 +18,11 @@ export class VestidoEntity {
     estado:string;
     @Column()
     descripcion:string;
+    @Column()
+    imagenVestido: string;
+    @Column()
+    estadoVenta: boolean;
+
     @ManyToOne(
         type => UsuarioEntity,
         usuario => usuario.vestidos
