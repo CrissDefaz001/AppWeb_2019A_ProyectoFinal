@@ -8,6 +8,9 @@ import { UsuarioEntity } from './usuario/usuario.entity';
 import {VestidoEntity} from "./vestido/vestido.entity";
 import {VestidoModule} from "./vestido/vestido.module";
 import { TiendaModule } from './tienda/tienda.module';
+import {VentasModule} from "./ventas/ventas.module";
+import {UsuarioService} from "./usuario/usuario.service";
+
 
 @Module({
   imports: [
@@ -24,7 +27,9 @@ import { TiendaModule } from './tienda/tienda.module';
       synchronize: true,
       dropSchema: false,
     }),
-    HomeModule, UsuarioModule, VestidoModule, TiendaModule],
+
+    HomeModule, UsuarioModule, VestidoModule,VentasModule, TiendaModule],
+
   controllers: [AppController],
   providers: [AppService],
 })

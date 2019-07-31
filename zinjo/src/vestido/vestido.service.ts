@@ -4,6 +4,7 @@ import {FindManyOptions, Repository} from "typeorm";
 
 import {InjectRepository} from '@nestjs/typeorm';
 import {UsuarioEntity} from "../usuario/usuario.entity";
+import {Usuario} from "../../interfaces/usuario";
 
 @Injectable()
 export class VestidoService {
@@ -28,14 +29,26 @@ export class VestidoService {
         return vestidoCreado;
     }
 
-    buscar(parametros?:FindManyOptions):Promise<VestidoEntity[]>{
+    buscar(parametros?: FindManyOptions): Promise<VestidoEntity[]> {
         return this._vestidoRepository.find(parametros)
+    }
+
+    async actualizarVestido(id: number, vestido: Vestido) {
+        return await this._vestidoRepository
+            .update(id, {
+                talla: vestido.talla,
+                color: vestido.color,
+                precio: vestido.precio,
+                estado: vestido.estado,
+                descripcion: vestido.descripcion
+            });
     }
 
 
 }
 
 export interface Vestido {
+
     id?:number;
     talla:string;
     color:string;

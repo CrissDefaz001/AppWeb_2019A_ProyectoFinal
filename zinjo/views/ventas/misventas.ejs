@@ -63,7 +63,8 @@
                     !Hola! Bienvenida de nuevo <b><%= username %></b>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="/usuario/editarUsuario/<%=username.toLowerCase()%>">Editar mi perfil</a>
+                    <a class="dropdown-item" href="/usuario/editarUsuario/<%= username.toLowerCase() %>">Editar mi
+                        perfil</a>
                     <a class="dropdown-item" href="/usuario/logout">Cerrar sesión</a>
                 </div>
             </div>
@@ -83,7 +84,7 @@
 
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/tienda/tienda">Tienda</a>
+                    <a class="nav-link" href="#">Tienda</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/vestido/registrar/<%=username.toLowerCase()%>">Vender</a>
@@ -94,50 +95,58 @@
             </ul>
         </div>
     </nav>
-    <div class="bs-example">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <!-- Carousel indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-            </ol>
-            <!-- Wrapper for carousel items -->
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://i.pinimg.com/originals/0c/bb/85/0cbb856eddcd7fc3770ed6242ba0a5ed.jpg"
-                         alt="First Slide" height="400" width="400">
-                    <div class="carousel-caption d-none d-md-block subs">
-                        <h4>Vestido 1</h4>
-                        <p>Descripción del primer vestido.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://cdn.palbin.com/users/21242/images/311423-vestido-nina-amaya-cermonia-primavera-verano-2019-1545158462.jpg.thumb"
-                         alt="Second Slide" height="400" width="400">
-                    <div class="carousel-caption d-none d-md-block subs">
-                        <h4>Vestido 2</h4>
-                        <p>Descripción del segundo vestido.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="http://www.kprichos.com/wp-content/uploads/bb-plugin/cache/Vestido-Veneno-en-la-piel-circle.jpg"
-                         alt="Third Slide" height="400" width="400">
-                    <div class="carousel-caption d-none d-md-block subs">
-                        <h4>Vestido 3</h4>
-                        <p>Descripción del tercer vestido.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Carousel controls -->
-            <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#myCarousel" data-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </a>
+</div>
+
+<div class="container" align="center">
+    <div class="row">
+        <div class="col-auto">
+            <h1 >Publicaciones</h1>
         </div>
     </div>
+
+    <div class="table ">
+        <table class="table-dark table-striped  table-bordered  ">
+
+
+            <tr>
+                <th>Color</th>
+                <th>Talla</th>
+                <th>Precio</th>
+                <th>Estado</th>
+                <th>Descripcion</th>
+                <th>Opciones</th>
+            </tr>
+            <% Vestidos.forEach((vestido)=>{ %>
+                <tr>
+                    <td> <%= vestido.color %> </td>
+                    <td> <%= vestido.talla %> </td>
+                    <td> <%= vestido.precio %> </td>
+                    <td> <%= vestido.estado %> </td>
+                    <td> <%= vestido.descripcion %> </td>
+
+
+                    <td>
+
+                        <!--<form action="/libros/editar" method="post">-->
+                        <a href="/vestido/editar/<%= vestido.id %>">
+                            <input id="idedit" name="idedit" type="number" value="<%= vestido.id %>" hidden>
+                            <button class="btn-light">Editar</button>
+                        </a>
+                        <!--</form>-->
+                        <br>
+                        <br>
+                        <form action="/ventas/eliminarpub" method="post">
+                            <input id="idelim" name="idelim" type="number" value="<%= vestido.id %>" hidden>
+                            <button class="btn-light">Borrar</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </table>
+    </div>
+
+
 </div>
+
+
 </body>
-</html>
