@@ -75,14 +75,8 @@ export class VestidoController {
         vestido.usuario = idUsuario;
         vestido.estadoVenta=false;
         file.path=file.path.replace("publico","");
+        console.log(file.path)
         vestido.imagenVestido = file.path.split("\\").join("/");
-        const usuario = await this._usuarioService.buscar({
-            where:[
-                {usuario:session.username}
-                ]
-        })[0];
-        vestido.usuario=usuario;
-
         const vestido_nuevo = await this._vestidoService.crear(vestido);
         console.log(vestido_nuevo);
         res.redirect('/tienda/tienda');
