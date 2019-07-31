@@ -32,6 +32,16 @@ export class TiendaService {
         return this._vestidoRepository.find(parametros)
     }
 
+    buscarOne(id:number):Promise<VestidoEntity>{
+        return  this._vestidoRepository.findOne(id);
+    }
+
+    actualizar(id:number,vestido:VestidoEntity):Promise<VestidoEntity>{
+        vestido.id=id;
+        const obj = this._vestidoRepository.create(vestido);
+        return this._vestidoRepository.save(obj);
+    }
+
 
 }
 

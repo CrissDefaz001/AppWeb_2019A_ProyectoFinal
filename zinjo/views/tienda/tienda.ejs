@@ -13,6 +13,30 @@
 </head>
 <style>
 
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
     .nav1 {
         background-image: url("https://i.ibb.co/tY7B5gR/banner2.png");
         background-repeat: revert;
@@ -104,6 +128,12 @@
     margin-left: 5%;
     transition: 0.5s;
 }
+    .left{
+        margin-left: 80%;
+    }
+    .btnxd{
+        margin: 5px;
+    }
 
 
 </style>
@@ -172,47 +202,57 @@
 
 <div class="container">
     <h2>Tienda</h2>
+
+
     <div class="row">
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Confirmación</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="false">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        ¿Desea comprar el vestido? Costo: <span id="costoModal"></span>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="text" id="identi" hidden>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <form action="/vestido/confirmar/">
-                            <button type="submit" class="btn btn-primary">Confirmar</button>
-                        </form>
-                    </div>
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-header">
+                    <h2>Confirmación</h2>
                 </div>
+                <div class="modal-body">
+                    <p>¿Desea comprar el vestido seleccionado?</p>
+                </div>
+                <div class="row left">
+                        <button class="btn btn-dark btnxd" id="btn-cancelar">Cancelar</button>
+                        <button class="btn btn-primary btnxd" id="btnComprar">Confirmar</button>
+                </div>
+
+
             </div>
+
+
         </div>
+
+
+
+
+
 
         <%vestidos.forEach(
                 (it)=>{
         %>
 
         <div class="col-md-3">
-            <div class="product-top"> 
+            <div class="product-top">
                 <img src="<%=it.imagenVestido%>"  height="300" width="180">
                     <div class="overlay">
 
-                        <button type="button" class="btn btn-secondary" title="Compra Rapida" data-value="<%=it.id%>" data-costo="<%=it.precio%>"><i id="btnConfirmar" class="fa fa-shopping-cart"></i></button>
+                        <button type="button" class="btn btn-secondary" title="Compra Rapida" onclick="mostratModal(this,<%=it.precio%>,<%=it.id%>)"><i id="btnConfirmar" class="fa fa-shopping-cart"></i></button>
+
 
                     </div>
-            </div>
-           
 
-            <div class="product-bottom text-center"> 
+
+                    </div>
+
+
+
+            <div class="product-bottom text-center">
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
@@ -224,26 +264,13 @@
                     <h5>Precio $ <%=it.precio%></h5>
 
             </div>
-        </div>  
+        </div>
 <%})%>
-        
+
     </div>
     </div>
 
-<script>
-    $(document).ready(function (){
-        debugger
 
-        $('#botonConfirmar').click(function(){
-            const id = $(this).data('value');
-            const precio = $(this).data('costo');
-            document.getElementById('identi').value = id;
-            document.getElementById('costoModal').value = precio;
-            $("#exampleModal").modal('show');
-        });
-    });
-
-</script>
 <script>
 
 
@@ -268,6 +295,65 @@
             boton.classList.remove("boton-seleccionado");
             boton.classList.add("boton-sin-seleccion");
             boton.innerText="Subir imagen";
+        }
+    }
+</script>
+
+
+<script>
+    function comprar(id){
+        const http = new XMLHttpRequest();
+        const url = "http://localhost:3000/tienda/comprar/"+id;
+
+        http.onreadystatechange = function(){
+            if(this.readyState=== XMLHttpRequest.DONE){
+                alert("Compra Exitosa");
+                location.reload();
+            }
+        }
+
+        http.open('POST',url,true);
+        http.send();
+
+    }
+
+    function mostratModal(element,precio,id){
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("btnComprar");
+
+        btn.setAttribute('onclick','comprar('+id+')');
+
+        modal.style.display="block";
+    }
+
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    var cancelar =document.getElementById('btnCancelar');
+    // When the user clicks the button, open the modal
+    btn.onclick = function() {
+        debugger;
+        modal.style.display = "block";
+    }
+
+    cancelar.onclick = function(){
+        modal.style.display="none";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
         }
     }
 </script>
