@@ -97,21 +97,31 @@
 
 <div class="container">
     <form action="/vestido/crear/<%=valor.idUsuario%>" enctype="multipart/form-data" method="post">
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <div class="form-group row">
-                    <label for="pic" class="form-control-label col-sm-10 boton boton-sin-seleccion text-box" id="lb-imagen"><img src="https://images.vexels.com/media/users/3/142827/isolated/lists/98e256ca2935093c9082795b3659e3f7-stroke-dress.png"/></label>
-                    <div class="col-sm-9" style="margin-left: 10px">
-                        <input id="pic"
-                               name="pic"
-                               type="file"
-                               accept="image/*"
-                               hidden
-                               onchange="validarArchivos()">
-                    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <div class="form-group row">
+                <label for="pic" class="form-control-label col-sm-10 boton boton-sin-seleccion text-box" id="lb-imagen"><img src="https://images.vexels.com/media/users/3/142827/isolated/lists/98e256ca2935093c9082795b3659e3f7-stroke-dress.png"/></label>
+                <div class="col-sm-9" style="margin-left: 10px">
+                    <input id="pic"
+                           name="pic"
+                           type="file"
+                           accept="image/*"
+                           hidden
+                           onchange="validarArchivos()">
                 </div>
-                <div class="imgPreview text-box">
-                    <img id="imgMuestra" src=""  class="maxW">
+            </div>
+            <div class="imgPreview text-box">
+                <img id="imgMuestra" src=""  class="maxW">
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            <div class="form-group row">
+                <label for="talla" class="col-sm-2 col-form-label">Talla</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control"name="talla" id="talla">
+
                 </div>
             </div>
 
@@ -140,6 +150,7 @@
                         <input type="text"class="form-control" name="precio" id="precio">
                     </div>
                 </div>
+
                 <div class="form-group purple-border row">
                     <label for="descripcion" class="col-sm-2 col-form-label">Descripción</label>
                     <div class="col-sm-12">
@@ -156,6 +167,7 @@
                 </div>
             </div>
         </div>
+
     </form>
 </div>
 <script>

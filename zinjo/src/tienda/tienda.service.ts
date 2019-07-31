@@ -1,13 +1,12 @@
 import {Injectable} from "@nestjs/common";
-import {VestidoEntity} from "./vestido.entity";
+import {VestidoEntity} from "../vestido/vestido.entity";
 import {FindManyOptions, Repository} from "typeorm";
 
 import {InjectRepository} from '@nestjs/typeorm';
 import {UsuarioEntity} from "../usuario/usuario.entity";
-import {Usuario} from "../../interfaces/usuario";
 
 @Injectable()
-export class VestidoService {
+export class TiendaService {
     // Inyectar Dependencias
     constructor(
         @InjectRepository(VestidoEntity)
@@ -29,33 +28,30 @@ export class VestidoService {
         return vestidoCreado;
     }
 
-    buscar(parametros?: FindManyOptions): Promise<VestidoEntity[]> {
+    buscar(parametros?:FindManyOptions):Promise<VestidoEntity[]>{
         return this._vestidoRepository.find(parametros)
     }
 
-    async actualizarVestido(id: number, vestido: Vestido) {
-        return await this._vestidoRepository
-            .update(id, {
-                talla: vestido.talla,
-                color: vestido.color,
-                precio: vestido.precio,
-                estado: vestido.estado,
-                descripcion: vestido.descripcion
-            });
+    buscarOne(id:number):Promise<VestidoEntity>{
+        return  this._vestidoRepository.findOne(id);
+    }
+
+    actualizar(id:number,vestido:VestidoEntity):Promise<VestidoEntity>{
+        vestido.id=id;
+        const obj = this._vestidoRepository.create(vestido);
+        return this._vestidoRepository.save(obj);
     }
 
 
 }
 
 export interface Vestido {
-
     id?:number;
     talla:string;
     color:string;
     precio:number;
     estado:string;
     descripcion:string;
-    imagenVestido:string;
     estadoVenta:boolean;
     usuario?:UsuarioEntity,
 

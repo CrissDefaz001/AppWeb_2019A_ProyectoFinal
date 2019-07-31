@@ -39,5 +39,8 @@ export class UsuarioService {
       .update(id,{ passwordUno: usuario.passwordUno, passwordDos: usuario.passwordDos });
   }
 
+    listar(parametros?):Promise<UsuarioEntity[]>{
+        return this._UsuarioRepository.find(parametros);
+    }
 
 }

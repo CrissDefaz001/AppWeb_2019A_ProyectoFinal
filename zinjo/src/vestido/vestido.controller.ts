@@ -2,28 +2,32 @@ import {Body, Controller, Get, Param, Post, Res, Session, UseInterceptors} from 
 import {FileInterceptor} from '@nestjs/platform-express';
 import {Vestido, VestidoService} from "./vestido.service";
 import {storage} from '../uploader/uploader';
-import {UsuarioService} from '../usuario/usuario.service';
+import { UsuarioService } from '../usuario/usuario.service';
 import {Usuario} from "../../interfaces/usuario";
-
 @Controller('/vestido')
 export class VestidoController {
     constructor(
-        private readonly _vestidoService: VestidoService,
+        private readonly _vestidoService:VestidoService,
         private readonly _usuarioService: UsuarioService
-    ) {
-    }
+    )
+    {}
+
 
     @Get('registrar/:username')
     async registrarVestido(
         @Res() response,
         @Session() session,
         @Param('username') username: string
-    ) {
+    )
+    {
+
         this._usuarioService.buscar(
             {
                 select: ['idUsuario', 'nombreCompleto', 'nombreCompleto', 'direccion',
                     'fechaNac', 'usuario', 'telefono'],
-                where: [{'usuario': username}],
+
+                where: [{ 'usuario': username }],
+
             },
         ).then(
             value => {
@@ -31,7 +35,9 @@ export class VestidoController {
                     i => {
                         // console.log(i.idUsuario);
                         response.render('vestido/vestido_registro',
-                            {valor: i, username: session.username.toUpperCase()});
+
+                            {valor: i, username: session.username.toUpperCase() });
+
                     },
                 );
             },
@@ -39,13 +45,17 @@ export class VestidoController {
             reason => {
                 console.log(reason);
                 response.status(400);
+
                 response.send({mensaje: 'Error de consulta', error: 400});
+
             },
         );
     }
 
 
-    @Post('crear/:idUsuario') @UseInterceptors(
+
+    @Post('crear/:idUsuario')@UseInterceptors(
+
         FileInterceptor(
             'pic',
             {
@@ -58,13 +68,28 @@ export class VestidoController {
         @Session() session,
         @Param('idUsuario') idUsuario,
         @Body() vestido: Vestido,
-    ) {
-        vestido.usuario = idUsuario
+
+        @UploadedFile() file,
+        @Res() res
+    ){
+        vestido.usuario = idUsuario;
+        vestido.estadoVenta=false;
+        file.path=file.path.replace("publico","");
+        vestido.imagenVestido = file.path.split("\\").join("/");
+        const usuario = await this._usuarioService.buscar({
+            where:[
+                {usuario:session.username}
+                ]
+        })[0];
+        vestido.usuario=usuario;
+
         const vestido_nuevo = await this._vestidoService.crear(vestido);
         console.log(vestido_nuevo);
+        res.redirect('/tienda/tienda');
     }
 
     @Get('listar')
+
     async getVestidos() {
         return await this._vestidoService.buscar();
     }
@@ -117,3 +142,4 @@ export class VestidoController {
 
 
 }
+
