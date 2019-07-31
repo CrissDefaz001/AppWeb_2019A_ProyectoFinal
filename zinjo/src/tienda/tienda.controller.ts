@@ -67,5 +67,11 @@ export class TiendaController {
 
         }
     }
+    @Get('contacto')
+    formulariocontacto(
+        @Res() res,
+    ) {
+        res.render('contacto/contacto');
+    }
 
 }

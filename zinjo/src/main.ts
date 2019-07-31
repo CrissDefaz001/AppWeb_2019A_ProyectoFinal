@@ -12,6 +12,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule) as NestExpressApplication;
 
   app.use(express.static('publico'));
+  app.useStaticAssets(join(__dirname, '..', 'static'));
 
   app.use(cookieParser('Mi secreto'));
   app.use(

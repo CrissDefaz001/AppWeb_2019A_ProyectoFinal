@@ -2,39 +2,23 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Inicio</title>
+    <title>Mis Ventas</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <style>
-    .carousel {
-        background: #040608;
-        margin-top: 20px;
-    }
-
-    .carousel-item {
-        text-align: center;
-        min-height: 280px; /* Prevent carousel from being distorted if for some reason image doesn't load */
-    }
-
-    .bs-example {
-        margin: 20px;
-        text-align: center;
-    }
-
-    .nav1 {
-        background-image: url("https://i.ibb.co/tY7B5gR/banner2.png");
-        background-repeat: revert;
-    }
-
-    .subs {
-        color: #040608;
-    }
 
     body {
         background-image: url("https://wallup.net/wp-content/uploads/2018/09/27/12847-abstract-placebo-blurred.jpg");
+    }
+    h1 {
+        color: white;
+    }
+    .nav1 {
+        background-image: url("https://i.ibb.co/tY7B5gR/banner2.png");
+        background-repeat: revert;
     }
 
 </style>
@@ -84,13 +68,16 @@
 
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Tienda</a>
+                    <a class="nav-link" href="/tienda/tienda">Tienda</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/vestido/registrar/<%=username.toLowerCase()%>">Vender</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/ventas/misventas">Mis ventas</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/tienda/contacto">Contáctanos</a>
                 </li>
             </ul>
         </div>

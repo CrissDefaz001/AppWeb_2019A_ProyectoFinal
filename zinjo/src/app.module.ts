@@ -9,7 +9,6 @@ import {VestidoEntity} from "./vestido/vestido.entity";
 import {VestidoModule} from "./vestido/vestido.module";
 import { TiendaModule } from './tienda/tienda.module';
 import {VentasModule} from "./ventas/ventas.module";
-import {UsuarioService} from "./usuario/usuario.service";
 
 
 @Module({
@@ -19,8 +18,8 @@ import {UsuarioService} from "./usuario/usuario.service";
       type: 'mysql',
       host: 'localhost',
       port: 3306,
-      username: 'root',
-      password: 'root1234',
+      username: 'admin',
+      password: 'admin',
       database: 'zinjo',
       entities: [UsuarioEntity,
       VestidoEntity],

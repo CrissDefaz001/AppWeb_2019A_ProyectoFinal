@@ -1,9 +1,9 @@
-import {Body, Controller, Get, Param, Post, Res, Session, UseInterceptors} from "@nestjs/common";
+import {Body, Controller, Get, Param, Post, Res, Session, UploadedFile, UseInterceptors} from "@nestjs/common";
 import {FileInterceptor} from '@nestjs/platform-express';
 import {Vestido, VestidoService} from "./vestido.service";
 import {storage} from '../uploader/uploader';
 import { UsuarioService } from '../usuario/usuario.service';
-import {Usuario} from "../../interfaces/usuario";
+
 @Controller('/vestido')
 export class VestidoController {
     constructor(
