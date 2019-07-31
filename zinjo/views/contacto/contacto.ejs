@@ -1,24 +1,112 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mis Ventas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<style>
 
-<!-- Contact Us Section -->
+    body {
+        background-image: url("https://wallup.net/wp-content/uploads/2018/09/27/12847-abstract-placebo-blurred.jpg");
+    }
+    h1 {
+        color: white;
+    }
+    .nav1 {
+        background-image: url("https://i.ibb.co/tY7B5gR/banner2.png");
+        background-repeat: revert;
+    }
+    .find-widget {
+        color:white;
+    }
+
+         /* Set the size of the div element that contains the map */
+     #map {
+         height: 400px;  /* The height is 400 pixels */
+         width: 100%;  /* The width is the width of the web page */
+     }
+
+</style>
+<body>
+<!-- Barra de navegacion-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark nav1">
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="#">
+            <img src="https://media.fontis.com.au/media/cms/page/akeneo.png"
+                 width="90" height="90" alt="ropa">
+        </a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 justify-content-center">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">CONTACTANOS<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <div class="my-2 my-lg-0">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button"
+                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    !Hola! Bienvenida de nuevo <b><%= username %></b>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="/usuario/editarUsuario/<%= username.toLowerCase() %>">Editar mi
+                        perfil</a>
+                    <a class="dropdown-item" href="/usuario/logout">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- Carrusel -->
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto nav-tabs">
+                <li class="nav-item active">
+                    <a class="navbar-brand" href="#"><b>ZINJO</b></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home/principal">Inicio<span class="sr-only">(current)</span></a>
+
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/tienda/tienda">Tienda</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/vestido/registrar/<%=username.toLowerCase()%>">Vender</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/ventas/misventas">Mis ventas</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/tienda/contacto">Contáctanos</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
 <section class="Material-contact-section section-padding section-dark">
     <div class="container">
         <div class="row">
             <!-- Section Titile -->
             <div class="col-md-12 wow animated fadeInLeft" data-wow-delay=".2s">
-                <h1 class="section-title">En Bakery nos gustaría escucharte</h1>
+                <h1 class="section-title">En Zinjo nos gustaría escucharte</h1>
             </div>
         </div>
         <div class="row">
             <!-- Section Titile -->
             <div class="col-md-6 mt-3 contact-widget-section2 wow animated fadeInLeft" data-wow-delay=".2s">
-                <p>Dejanos tus comentarios, dudas y sugerencias. Estaremos agradecidos de tus mensajes y leeremos cada uno de ellos.</p>
+                <p style="color: white">Dejanos tus comentarios, dudas y sugerencias. Estaremos agradecidos de tus mensajes y leeremos cada uno de ellos.</p>
 
                 <div class="find-widget">
-                    Compañia:  <a href="https://hostriver.ro">Bakery</a>
+                    Compañia:  <a href="#">Zinjo</a>
                 </div>
                 <div class="find-widget">
                     Dirección: <a href="#">Quito - Ecuador</a>
@@ -27,8 +115,9 @@
                     Teléfono:  <a href="#">+593 998982147</a>
                 </div>
                 <div class="find-widget">
-                    Horario: <a href="#">Lunes - Sabado: 07:30 AM - 20:30 PM</a>
+                    Horario: <a href="#">Lunes - Sabado: 08:30 AM - 20:30 PM</a>
                 </div>
+                <div id="map"></div>
             </div>
             <!-- contact form -->
             <div class="col-md-6 wow animated fadeInRight" data-wow-delay=".2s">
@@ -59,7 +148,7 @@
                     </div>
                     <!-- Form Submit -->
                     <div class="form-submit mt-5">
-                        <button class="btn btn-common" type="submit" id="form-submit"><i class="material-icons mdi mdi-message-outline"></i> Enviar Mensaje</button>
+                        <button class="btn btn-success" type="submit" id="form-submit"><i class="material-icons mdi mdi-message-outline"></i> Enviar Mensaje</button>
                         <div id="msgSubmit" class="h3 text-center hidden"></div>
                         <div class="clearfix"></div>
                     </div>
@@ -67,4 +156,20 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            // The location of Uluru
+            var quito = {lat: -0.1627592, lng: -78.46136709999996};
+            // The map, centered at Uluru
+            var map = new google.maps.Map(
+                document.getElementById('map'), {zoom: 15, center: quito});
+            // The marker, positioned at Uluru
+            var marker = new google.maps.Marker({position: quito, map: map});
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRrz22qejU8OBDFgLJdUacnA3IZjnOexg&callback=initMap">
+    </script>
 </section>

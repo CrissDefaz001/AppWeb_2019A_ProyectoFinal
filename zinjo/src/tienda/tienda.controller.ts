@@ -1,7 +1,5 @@
-import {Body, Controller, UseInterceptors, UploadedFile, Get, Post, Res, Session, Param} from "@nestjs/common";
-import { FileInterceptor } from  '@nestjs/platform-express';
-import {Vestido, VestidoService} from "../vestido/vestido.service";
-import {storage} from '../uploader/uploader';
+import {Controller, Get, Post, Res, Session, Param} from "@nestjs/common";
+
 import { UsuarioService } from '../usuario/usuario.service';
 import {TiendaService} from "./tienda.service";
 
@@ -70,8 +68,10 @@ export class TiendaController {
     @Get('contacto')
     formulariocontacto(
         @Res() res,
+        @Session() session
     ) {
-        res.render('contacto/contacto');
+        res.render('contacto/contacto',
+            {username: session.username.toUpperCase()});
     }
 
 }
