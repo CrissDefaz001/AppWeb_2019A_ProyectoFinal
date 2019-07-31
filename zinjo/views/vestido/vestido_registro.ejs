@@ -65,7 +65,7 @@
     </div>
 </nav>
 <!-- Carrusel -->
-<div class="container">
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto nav-tabs">
@@ -91,7 +91,7 @@
             </ul>
         </div>
     </nav>
-</div>
+
 <div>
     <span>
         <p></p>
@@ -124,32 +124,32 @@
                 <div class="form-group row">
                     <label for="talla" class="col-sm-2 col-form-label">Talla</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control"name="talla" id="talla">
+                        <input type="number" class="form-control"name="talla" id="talla" required data-error="Por favor ingrese la talla">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="color" class="col-sm-2 col-form-label">Color</label>
                     <div class="col-sm-4">
-                        <input type="text"class="form-control" name="color" id="color">
+                        <input type="text"class="form-control" name="color" id="color" required data-error="Por favor ingrese el color">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="estado" class="col-sm-2 col-form-label">Estado</label>
                     <div class="col-sm-6">
-                        <input type="text"class="form-control" name="estado" id="estado">
+                        <input type="text" class="form-control" name="estado" id="estado" required data-error="Por favor ingrese el estado">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="precio" class="col-sm-2 col-form-label">Precio</label>
                     <div class="col-sm-4">
-                        <input type="text"class="form-control" name="precio" id="precio">
+                        <input type="number"class="form-control" name="precio" id="precio" required data-error="Por favor ingrese el precio">
                     </div>
                 </div>
 
                 <div class="form-group purple-border row">
                     <label for="descripcion" class="col-sm-2 col-form-label">Descripción</label>
                     <div class="col-sm-12">
-                        <textarea class="form-control rounded-0" name="descripcion" id="descripcion" rows="5"></textarea>
+                        <textarea class="form-control rounded-0" name="descripcion" id="descripcion" rows="5" required data-error="Por favor ingrese la drescripción"></textarea>
                     </div>
                 </div>
                 <div class="form-group row">

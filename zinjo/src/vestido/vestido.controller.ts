@@ -75,9 +75,8 @@ export class VestidoController {
         vestido.usuario = idUsuario;
         vestido.estadoVenta=false;
         file.path=file.path.replace("publico","");
+        console.log(file.path)
         vestido.imagenVestido = file.path.split("\\").join("/");
-
-
         const vestido_nuevo = await this._vestidoService.crear(vestido);
         console.log(vestido_nuevo);
         res.redirect('/tienda/tienda');
