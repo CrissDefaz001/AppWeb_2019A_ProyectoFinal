@@ -81,9 +81,7 @@
     .row{
         margin-top: 30px;
     }
-    img{
-        width: 100%;
-    }
+
 
     .product-bottom .fa{
         color: #28a745;
@@ -122,6 +120,9 @@
     .btnxd{
         margin: 5px;
     }
+
+
+    #responsive-image {  width: 100%;   }
 
 
 </style>
@@ -169,7 +170,7 @@
                     <a class="nav-link" href="/home/principal">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Tienda</a>
+                    <a class="nav-link" href="/tienda/tienda">Tienda</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/vestido/registrar/<%=username.toLowerCase()%>">Vender</a>
@@ -218,7 +219,7 @@
 
         <div class="col-md-3">
             <div class="product-top">
-                <img src="<%=it.imagenVestido%>"  height="300" width="180">
+                <img id="responsive-image" src="<%=it.imagenVestido%>"  height="300" width="180"  >
                     <div class="overlay">
 
                         <button type="button" class="btn btn-secondary" title="Compra Rapida" onclick="mostratModal(this,<%=it.precio%>,<%=it.id%>)"><i id="btnConfirmar" class="fa fa-shopping-cart"></i></button>
