@@ -206,8 +206,8 @@
                     <p>¿Desea comprar el vestido seleccionado?</p>
                 </div>
                 <div class="row left">
-                        <button class="btn btn-dark btnxd" id="btn-cancelar">Cancelar</button>
-                        <button class="btn btn-primary btnxd" id="btnComprar">Confirmar</button>
+                        <button class="btn btn-dark btnxd" id="btn-cancelar"  data-dismiss="modal" onclick="mostratModal>Cancelar</button>
+                        <button class="btn btn-primary btnxd" id="btnComprar" >Confirmar</button>
                 </div>
             </div>
 
@@ -281,15 +281,17 @@
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
+    function cerrarModal(){
 
-    var cancelar =document.getElementById('btnCancelar');
+    }
+    var cancelar = document.getElementById("btn-cancelar");
     // When the user clicks the button, open the modal
     btn.onclick = function() {
         debugger;
         modal.style.display = "block";
     }
 
-    cancelar.onclick = function(){
+    cancelar.onclick = function() {
         modal.style.display="none";
     }
 
