@@ -8,7 +8,8 @@ import {TiendaService} from "./tienda.service";
 
 @Controller('/tienda')
 export class TiendaController {
-    constructor(private readonly _tiendaService: TiendaService) {
+    constructor(private readonly _tiendaService: TiendaService,
+                private readonly _usuarioService: UsuarioService) {
     }
 
 
@@ -19,6 +20,11 @@ export class TiendaController {
 
         if (session.username) {
             try {
+                const usuario = await this._usuarioService.buscar({
+                    where:[
+                        {usuario:session.username}
+                    ]
+                })[0];
                 const parametro = {
                     where:[
                         {estadoVenta:false}
